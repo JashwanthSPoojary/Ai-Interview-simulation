@@ -1,51 +1,31 @@
-import { convertRequest } from "@/lib/convertRequest";
-import { IncomingForm, Files, Fields } from "formidable";
+import { handleFileUpload, deleteFile } from "@/lib/fileHandler";
+import { extractTextFromPDF } from "@/lib/pdfParser";
+import { analyzeResume } from "@/lib/aiService";
+import { saveDeveloper } from "@/lib/prismaService";
 import { NextResponse } from "next/server";
-import path from "path";
 
 export const config = {
   runtime: "nodejs",
-  api: {
-    bodyParser: false,
-  },
+  api: { bodyParser: false },
 };
 
 export async function POST(request: Request) {
   try {
-    const nodeReq = await convertRequest(request);
+    const { filePath } = await handleFileUpload(request);
+    const resumeText = await extractTextFromPDF(filePath);
+    await deleteFile(filePath);
 
-    const data = await new Promise<{ fields: Fields; files: Files }>(
-      (resolve, reject) => {
-        const form = new IncomingForm({
-          uploadDir: path.join(process.cwd(), "public/uploads"),
-          keepExtensions: true,
-          multiples: false,
-        });
+    const parsedData = await analyzeResume(resumeText);
+    if (!parsedData) throw new Error("AI failed to process resume");
 
-        form.parse(nodeReq, (err, fields, files) => {
-          if (err) {
-            console.error("Error parsing form data:", err);
-            reject(err);
-          } else {
-            resolve({ fields, files });
-          }
-        });
-      }
-    );
-
-    if (!data?.files.resume) {
-      return NextResponse.json(
-        { error: "Resume file is required" },
-        { status: 400 }
-      );
-    }
+    const developer = await saveDeveloper(parsedData);
 
     return NextResponse.json({
-      message: "Data received successfully",
-      fileName: data.files.resume[0].newFilename,
+      message: "Data saved successfully",
+      id: developer.id,
     });
   } catch (error) {
-    console.error("Error in setup API:", error);
+    console.error("Error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

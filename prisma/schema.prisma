@@ -10,7 +10,6 @@ datasource db {
 model Developer {
   id        String       @id @default(cuid())
   role      String
-  pdfname   String
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   skills    Skill[]
@@ -29,6 +28,47 @@ model Project {
   description String     @db.Text
   developerId String
   developer   Developer  @relation(fields: [developerId], references: [id] , onDelete: Cascade )
-
   @@index([developerId])
+}
+model Interview {
+  id String @id @default(cuid())
+  duration Int
+  questions Question[]
+  answers     Answer[]
+}
+
+model Question {
+  id        String       @id @default(cuid())
+  question        String   
+  interviewId String
+  interview Interview @relation(fields: [interviewId], references: [id],onDelete: Cascade)
+  answers     Answer[]
+  @@index([interviewId])
+}
+
+model Answer {
+  id          String    @id @default(cuid())
+  answer      String
+  questionId  String
+  interviewId String
+  question    Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  interview   Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+  @@index([questionId])
+  @@index([interviewId])
+}
+model Feedback {
+  id                 String   @id @default(cuid()) // Unique ID
+  role               String   // Role of the reviewer
+  overallShortFeedback String  // Short summary feedback
+  createdAt          DateTime @default(now()) // Timestamp for record creation
+  inDepthFeedback    FeedbackDetail[] // One-to-many relation with FeedbackDetail
+}
+
+model FeedbackDetail {
+  id          String @id @default(cuid()) // Unique ID
+  feedbackId  String // Foreign key to Feedback
+  question    String // Question asked
+  improvement String // Feedback on improvement needed
+  suggestion  String // Suggestion for improvement
+  feedback    Feedback @relation(fields: [feedbackId], references: [id], onDelete: Cascade)
 }

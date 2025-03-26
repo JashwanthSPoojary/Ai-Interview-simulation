@@ -42,6 +42,7 @@ export async function DELETE(request:NextRequest,{params}:{params:{developerId:s
         return NextResponse.json({message:"Error while deleting the skill"},{status:500})
     }
 }
+
 export async function POST (request:NextRequest,{params}:{params:{developerId:string}}){
     const { developerId } = params;
     const {newSkill} = await request.json();

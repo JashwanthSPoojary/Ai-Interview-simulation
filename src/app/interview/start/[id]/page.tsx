@@ -1,26 +1,37 @@
-const StartInterview = () => {
+import NotFoundError from "@/components/basic/NotFoundError";
+import Navbar from "@/components/pages/interviewStart/Navbar";
+import StartHeader from "@/components/pages/interviewStart/StartHeader";
+
+const InterviewStart = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
+  const { id } = await params;
+  if (!/^[a-zA-Z0-9]+$/.test(id)) {
+    return <NotFoundError error="Invalid URL" />;
+  }
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/checkpoint?developerId=${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+  );
+  if (res.status !== 200) {
+    const error = await res.json();
+    return <NotFoundError error={error.message} />;
+  }
   return (
-    <div>
-      <h2>Start the Interview </h2>
-      <div>
-        <h4>Select the Interview Duration</h4>
-        <select>
-          <option value="180">3 min ( 6 questions )</option>
-          <option value="180">5 min ( 10 questions )</option>
-          <option value="180">7 min ( 14 questions )</option>
-        </select>
-      </div>
-      <div>
-        <h4>Instructions for Interview Session</h4>
-        <ul>
-          <li>Each question has a 30-second time limit</li>
-          <li>The answer will be automatically submitted when time expires</li>
-          <li>Questions are personalized based on your resume</li>
-          <li>You'll receive feedback after completing all questions</li>
-        </ul>
+    <div className="min-h-screen flex justify-center items-center ">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8">
+        <Navbar id={id}/>
+        <StartHeader />
       </div>
     </div>
   );
 };
 
-export default StartInterview;
+export default InterviewStart;

@@ -12,9 +12,9 @@ const PreviewHeader = ({interviewId}:{interviewId:string}) => {
           <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">Profile Preview</h2>
         </div>
         
-        <Link href={`/interview/live/${interviewId}`} className="w-full sm:w-auto">
+        <Link href={`/interview/start/${interviewId}`} className="w-full sm:w-auto">
           <Button 
-            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-black hover:bg-gray-800 text-white"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-black hover:bg-gray-800 text-white cursor-pointer"
           >
             Save and Proceed
             <ArrowRight className="h-4 w-4" />

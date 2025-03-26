@@ -11,26 +11,29 @@
   "dependencies": {
     "@google/generative-ai": "^0.23.0",
     "@hello-pangea/dnd": "^18.0.1",
-    "@prisma/client": "^6.4.1",
+    "@prisma/client": "^6.5.0",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-select": "^2.1.6",
     "@radix-ui/react-separator": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.2",
     "axios": "^1.8.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "formidable": "^3.5.2",
+    "framer-motion": "^12.5.0",
     "lucide-react": "^0.477.0",
+    "motion": "^12.5.0",
     "next": "15.2.1",
     "next-auth": "^4.24.11",
     "next-themes": "^0.4.4",
     "pdf-parse": "^1.1.1",
-    "prisma": "^6.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sonner": "^2.0.1",
     "tailwind-merge": "^3.0.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -39,6 +42,7 @@
     "@types/pdf-parse": "^1.1.4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "prisma": "^6.5.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
