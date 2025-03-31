@@ -1,6 +1,6 @@
 import { Clock } from "lucide-react";
 
-export const QuestionTimer = ({ seconds, totalSeconds = 30 }: { seconds: number, totalSeconds?: number }) => {
+export const QuestionTimer = ({ seconds, totalSeconds = 60 }: { seconds: number, totalSeconds?: number }) => {
     const percentage = (seconds / totalSeconds) * 100;
     
     return (

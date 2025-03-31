@@ -1,5 +1,5 @@
+import Navbar from "@/components/pages/interviewSetup/Navbar"
 import { ResumeUpload } from "@/components/pages/interviewSetup/ResumeUpload"
-import Navbar from "@/components/pages/interviewFeedback/Navbar"
 
 export default function InterviewSetup() {
   return (

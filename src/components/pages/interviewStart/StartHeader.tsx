@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const durationToQuestions = {
-  "3": 6,
-  "5": 10,
-  "7": 14,
+  "6": 6,
+  "10": 10,
+  "14": 14,
 };
 
 const StartHeader = () => {
@@ -49,7 +49,7 @@ const StartHeader = () => {
           Instructions for Interview Session
         </h4>
         <ul className="space-y-2 list-disc pl-5 text-gray-800">
-          <li>Each question has a 30-second time limit</li>
+          <li>Each question has a 60-second time limit</li>
           <li>The answer will be automatically submitted when time expires</li>
           <li>Questions are personalized based on your resume</li>
           <li>You'll receive feedback after completing all questions</li>

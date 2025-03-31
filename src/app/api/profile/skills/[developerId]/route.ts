@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-export async function DELETE(request:NextRequest,{params}:{params:{developerId:string}}){
-    const { developerId } = params;
+export async function DELETE(request:NextRequest,{params}:{params:Promise<{developerId:string}>}){
+    const { developerId } = await params;
     const { searchParams } = new URL(request.url);
     const skillId = searchParams.get("skillId");
     if (!skillId || !developerId) {
@@ -43,8 +43,8 @@ export async function DELETE(request:NextRequest,{params}:{params:{developerId:s
     }
 }
 
-export async function POST (request:NextRequest,{params}:{params:{developerId:string}}){
-    const { developerId } = params;
+export async function POST (request:NextRequest,{params}:{params:Promise<{developerId:string}>}){
+    const { developerId } = await params;
     const {newSkill} = await request.json();
     if(!newSkill|| !developerId){
         return NextResponse.json({message:"no input or developerId"});

@@ -18,8 +18,9 @@ export async function POST(
     const formattedText = formatQuestionWithAnswers(questionWithAnswer);
     const feedback = await generateInterviewFeedback(formattedText);
     const res = await saveFeedback(feedback);
-    return NextResponse.json({ message:"was succesfull" , id:res.id }, { status: 200 });
+    return NextResponse.json({ message:"was succesfull" , id:res.id}, { status: 200 });
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { message: "Backend is down . will fix asap" },
       { status: 500 }

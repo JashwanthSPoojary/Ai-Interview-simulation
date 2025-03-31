@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-export async function DELETE(request:NextRequest,{params}:{params:{id:string}}) {
-    const { id } = params;
+export async function DELETE(request:NextRequest,{params}:{params:Promise<{id:string}>}) {
+    const { id } = await params;
     try {
         const res = await prisma.project.delete({
             where:{
@@ -18,8 +18,8 @@ export async function DELETE(request:NextRequest,{params}:{params:{id:string}}) 
         return NextResponse.json({message:"Failed to delete project"},{status:500});
     }
 };
-export async function PUT(request:NextRequest,{params}:{params:{id:string}}) {
-    const { id } = params;
+export async function PUT(request:NextRequest,{params}:{params:Promise<{id:string}>}) {
+    const { id } = await params;
     const { name , description } = await request.json();
     try {
         const res = await prisma.project.update({
@@ -41,9 +41,9 @@ export async function PUT(request:NextRequest,{params}:{params:{id:string}}) {
         return NextResponse.json({message:"Failed to update project"},{status:500});
     }
 };
-export async function POST(request:NextRequest,{params}:{params:{id:string}}) {
+export async function POST(request:NextRequest,{params}:{params:Promise<{id:string}>}) {
     const { name,description } = await request.json();
-    const { id } = params;
+    const { id } = await params;
     try {
         const res = await prisma.project.create({
             data:{

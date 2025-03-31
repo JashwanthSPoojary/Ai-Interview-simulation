@@ -1,6 +1,5 @@
 import NotFoundError from '@/components/basic/NotFoundError';
-import Navbar from '@/components/pages/interviewFeedback/Navbar';
-// import Navbar from '@/components/pages/interviewPreview/Navbar';
+import Navbar from '@/components/pages/interviewPreview/Navbar';
 import PreviewCards from '@/components/pages/interviewPreview/PreviewCards';
 import PreviewHeader from '@/components/pages/interviewPreview/PreviewHeader';
 

@@ -43,7 +43,6 @@ export async function generateInterviewFeedback(formatData:string) {
   if (!apiResponse) return null;
 
   return JSON.parse(apiResponse.replace(/^```json\s*/, "").replace(/\n?```[\r\n]*$/, "").trim());
-  // return apiResponse;
 }
 
 

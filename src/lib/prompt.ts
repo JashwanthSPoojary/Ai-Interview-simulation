@@ -54,11 +54,7 @@ with questions as array of objects and objects having key ("question") and value
 };
 export const FeedbackPrompt = (formatData: string) => {
   return `
-You are an **experienced technical recruiter**. Your task is to analyze the interview responses and provide structured feedback in **strict JSON format**.
-
-### **Instructions for JSON Response:**
-- **Return ONLY a valid JSON object. No extra text.**
-- **Ensure the JSON follows this exact structure:**  
+You are an AI specialized in providing feedback from analyzing the response from questions asked in technical interview and candidate had one minute to read a question , type answer in keyboard for each question so keep that in consideration for giviing feedback . Strictly return the response in **JSON format** with the following structure:
 
 \`\`\`json
 {
@@ -74,13 +70,7 @@ You are an **experienced technical recruiter**. Your task is to analyze the inte
 }
 \`\`\`
 
-### **Guidelines for Feedback:**
-- Identify **strengths** and **weaknesses** in each answer.
-- **Be constructive**: Instead of saying "poor answer," explain how it can be improved.
-- **Use technical insights**: If a response lacks details about a framework, technology, or best practice, mention it.
-- **Keep it structured and concise**: Avoid generic feedback like "needs improvement"; provide actionable advice.
-
-### **Interview Responses for Analysis:**
+**Data about Interview question and response:**  
 ${formatData}
-  `;
+`;
 };

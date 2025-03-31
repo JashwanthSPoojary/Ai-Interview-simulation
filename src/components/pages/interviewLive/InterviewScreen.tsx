@@ -35,7 +35,7 @@ const InterviewScreen = ({ questions }: QuestionsProps) => {
   
   // Local state
   const [currentAnswer, setCurrentAnswer] = useState<string>("");
-  const [timer, setTimer] = useState<number>(30);
+  const [timer, setTimer] = useState<number>(60);
   const [loading,setLoading] = useState<boolean>(false);
 
   // Timer effect
@@ -82,7 +82,7 @@ const InterviewScreen = ({ questions }: QuestionsProps) => {
     }
     
     setCurrentAnswer("");
-    setTimer(30);
+    setTimer(60);
   };
 
   // Feedback submission handler
@@ -92,7 +92,7 @@ const InterviewScreen = ({ questions }: QuestionsProps) => {
       const res = await axios.post(`/api/interview/live/${id}/complete`, {
         answers,
       });
-      const feedbackId = res.data.id;
+      const feedbackId = res.data.id;      
       router.push(`/interview/feedback/${feedbackId}`);
     } catch (error) {
       console.error("Error submitting feedback:", error);
