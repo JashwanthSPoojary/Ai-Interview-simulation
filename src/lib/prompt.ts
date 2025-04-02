@@ -52,28 +52,7 @@ with questions as array of objects and objects having key ("question") and value
           .join("\n")}
     `.trim();
 };
-// export const FeedbackPrompt = (formatData: string) => {
-//   return `
-// You are an AI specialized in providing feedback from analyzing the response from questions asked in technical interview and candidate had one minute to read a question , type answer in keyboard for each question so keep that in consideration for giviing feedback . Strictly return the response in **JSON format** with the following structure:
 
-// \`\`\`json
-// {
-//   "role": "technical_recruiter",
-//   "overallShortFeedback": "Brief but meaningful feedback on overall performance.",
-//   "inDepthFeedback": [
-//     {
-//       "question": "Exact question asked",
-//       "improvement": "Key areas where the response lacked depth, clarity, or correctness.",
-//       "suggestion": "Specific ways the candidate can improve their response."
-//     }
-//   ]
-// }
-// \`\`\`
-
-// **Data about Interview question and response:**  
-// ${formatData}
-// `;
-// };
 export const FeedbackPrompt = (formatData: string) => {
   return `
 You are an AI specialized in analyzing technical interview responses. The candidate had **only one minute** to read the question and type their answer. Keep this strict time constraint in mind when providing feedback—focus on clarity, correctness, and conciseness rather than expecting long or highly detailed answers.
@@ -101,4 +80,3 @@ You are an AI specialized in analyzing technical interview responses. The candid
 ${formatData}
 `;
 };
-
