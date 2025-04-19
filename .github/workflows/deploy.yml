@@ -1,0 +1,23 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VM_IP }}
+          username: root  # Adjust based on your VM's username
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /root/Ai-Interview-simulation  # Adjust to your app's directory on the VM
+            git pull origin main
+            npm install
+            pm2 restart aiinterview_nextjs_app  # Ensure PM2 is managing your app
