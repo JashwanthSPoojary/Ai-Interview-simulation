@@ -9,9 +9,8 @@ const inter = Inter({
 });
 export const metadata: Metadata = {
   title: "InterviewAI",
-  description: "Upload resume and create AI interview simulation",
+  description: "upload your resume based on it ai forms questions to create a interview .",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
