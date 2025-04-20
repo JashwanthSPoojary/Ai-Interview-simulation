@@ -20,4 +20,5 @@ jobs:
             cd /root/Ai-Interview-simulation  # Adjust to your app's directory on the VM
             git pull origin main
             npm install
+            npm run build
             pm2 restart aiinterview_nextjs_app  # Ensure PM2 is managing your app

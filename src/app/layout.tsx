@@ -7,10 +7,12 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
+
 export const metadata: Metadata = {
   title: "InterviewAI",
   description: "upload your resume based on it ai forms questions to create a interview .",
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
