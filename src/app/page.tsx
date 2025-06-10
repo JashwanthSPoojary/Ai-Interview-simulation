@@ -5,6 +5,8 @@ import Header from "@/components/pages/LandingPage/Header";
 import Navbar from "@/components/pages/LandingPage/Navbar";
 
 export default function LandingPage() {
+  console.log("hey the key :");
+  console.log(process.env.GEMINI_API);
   return (
     <div className="w-full h-full">
       <Navbar/>
