@@ -67,12 +67,3 @@ AI Interview Simulation is a web application that lets you upload your resume an
    - Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
-
-## License
-
-This project is for learning and personal use.
-
----
-
-> **Note:**  
-> The originality and core ideas of this project description have been preserved as per the author's experience and journey.
