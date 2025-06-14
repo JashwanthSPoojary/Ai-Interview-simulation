@@ -6,10 +6,6 @@ export default function Footer() {
     <footer className="w-full py-12 bg-white border-t border-gray-100">
       <div className="container mx-auto px-4 flex flex-col items-center text-center">
         <h2 className="text-xl font-bold mb-4">InterviewAI</h2>
-        <p className="text-gray-600 text-sm">
-          Langing page was inspired by{" "}
-          <a href="https://gitmirror.sh/">gitmirror.sh</a>
-        </p>
 
         <div className="flex items-center justify-center mt-4 text-sm text-gray-600">
           <span>Built by</span>
